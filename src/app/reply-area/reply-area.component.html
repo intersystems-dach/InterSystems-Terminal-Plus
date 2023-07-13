@@ -1,0 +1,9 @@
+<div class="containerCol">
+  <textarea
+    *ngIf="text !== ''"
+    class="textarea"
+    [style.height.px]="getHeight()"
+    readonly
+    >{{ text }}</textarea
+  >
+</div>

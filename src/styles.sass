@@ -1,1 +1,55 @@
 /* You can add global styles to this file, and also import other style files */
+body
+  margin: 0
+  padding: 0
+
+.sticky
+  position: fixed
+  top: 0
+  width: 100%
+  z-index: 1000
+
+.mainContainerLeft
+  margin-top: 150px
+  margin-left: 50px
+
+.mainContainerMiddle
+  margin-top: 150px
+  display: flex
+  justify-content: center
+  align-items: center
+  flex-direction: column
+
+.containerCol
+  display: flex
+  flex-direction: column
+  box-sizing: border-box
+  -moz-box-sizing: border-box
+  width: 500px
+  *
+    margin-bottom: 15px
+
+.containerRow
+  display: flex
+  flex-direction: row
+  justify-content: space-between
+  align-items: space-between
+  box-sizing: border-box
+  -moz-box-sizing: border-box
+  *
+    margin-right: 15px
+
+.btn
+  cursor: pointer
+  border: none
+  outline: none
+  border-radius: 5px
+  padding: 10px 20px
+  font-size: 1.2rem
+  font-weight: bold
+  transition: 0.2s
+  background: #2c2a92
+  color: white
+  &:hover
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5)
+    transform: scale(1.1)
