@@ -8,9 +8,10 @@ import { CodeAreaComponent } from './code-area/code-area.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ReplyAreaComponent } from './reply-area/reply-area.component';
 import { ConnectionBarComponent } from './connection-bar/connection-bar.component';
+import { DarkmodeSwitchComponent } from './darkmode-switch/darkmode-switch.component';
 
 @NgModule({
-  declarations: [AppComponent, HeaderComponent, CodeAreaComponent, ReplyAreaComponent, ConnectionBarComponent],
+  declarations: [AppComponent, HeaderComponent, CodeAreaComponent, ReplyAreaComponent, ConnectionBarComponent, DarkmodeSwitchComponent],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
   providers: [],
   bootstrap: [AppComponent],
