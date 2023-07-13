@@ -1,11 +1,18 @@
 <app-header class="sticky"></app-header>
 <div class="mainContainerMiddle">
-  <div class="containerCol">
+  <div style="margin-bottom: 30px">
+    <app-connection-bar></app-connection-bar>
+  </div>
+  <div
+    [class]="
+      'container' + (getAppearanceService().isVerticalAlignment ? 'Row' : 'Col')
+    "
+  >
     <div>
       <app-code-area (replyEmitter)="onReply($event)"></app-code-area>
     </div>
     <div>
-      <app-reply-area [text]="reply"></app-reply-area>
+      <app-reply-area [reply]="reply"></app-reply-area>
     </div>
   </div>
 </div>

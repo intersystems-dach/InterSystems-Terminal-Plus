@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AppearenceService } from './services/appearence.service';
 
 @Component({
   selector: 'app-root',
@@ -7,9 +8,19 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'InterSystemsTerminalPlus';
-  reply: string = '';
+  reply: any = {
+    IsError: false,
+    ErrorText: '',
+    Prompt: '',
+  };
 
-  onReply(pReply: string) {
+  constructor(private appearenceService: AppearenceService) {}
+
+  onReply(pReply: any) {
     this.reply = pReply;
+  }
+
+  getAppearanceService() {
+    return this.appearenceService;
   }
 }

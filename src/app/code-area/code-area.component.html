@@ -1,11 +1,13 @@
-<div class="containerCol">
+<div class="containerCol" [style.width.px]="getWidth()">
   <textarea
     class="textarea"
     [(ngModel)]="code"
     placeholder="Write your code here"
     [style.height.px]="getHeight()"
   ></textarea>
-  <button class="btn" (click)="run()" *ngIf="!loading">Run</button>
+  <button class="btn" (click)="run()" *ngIf="!loading" style="font-size: 1.2em">
+    Run
+  </button>
   <div class="loading" *ngIf="loading">
     <div class="lds-ripple">
       <div></div>

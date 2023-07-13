@@ -6,10 +6,15 @@ import { Observable, catchError } from 'rxjs';
   providedIn: 'root',
 })
 export class ApiService {
+  private static _apiKey: string = '';
   public static host: string = 'localhost';
   public static port: number = 52773;
 
   constructor(private http: HttpClient) {}
+
+  static setAPIKey(pApiKey: string) {
+    ApiService._apiKey = pApiKey;
+  }
 
   isServerOnline() {
     return this.http
@@ -34,11 +39,15 @@ export class ApiService {
           ApiService.host +
           ':' +
           ApiService.port +
-          '/terminalplus/execute',
+          '/terminalplus/execute?apikey=' +
+          ApiService._apiKey,
         { code: pCode }
       )
       .pipe(
         catchError((err: HttpErrorResponse) => {
+          if (err.status == 401) {
+            throw new Error('Invalid API key');
+          }
           throw new Error('unknown error: ' + err.status);
         })
       );

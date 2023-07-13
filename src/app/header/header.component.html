@@ -1,3 +1,16 @@
 <div class="header">
   <img src="assets/logo.png" alt="InterSystemsTerminal+" class="logo" />
+  <img
+    [src]="
+      'assets/' +
+      (getAppearenceService().isVerticalAlignment ? 'vertical' : 'horizontal') +
+      '_align.png'
+    "
+    [alt]="
+      'align ' +
+      (getAppearenceService().isVerticalAlignment ? 'vertical' : 'horizontal')
+    "
+    class="align"
+    (click)="getAppearenceService().toggleAlignment()"
+  />
 </div>

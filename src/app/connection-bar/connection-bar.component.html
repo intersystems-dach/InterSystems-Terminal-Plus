@@ -1,0 +1,28 @@
+<div class="containerRow" [style.width.px]="getWidth()">
+  <div>
+    <p>API Key</p>
+    <input type="password" placeholder="API Key" [(ngModel)]="apiKey" />
+  </div>
+  <div>
+    <p>Host</p>
+    <input type="text" placeholder="Host" [(ngModel)]="host" />
+  </div>
+  <div>
+    <p>Port</p>
+    <input type="number" placeholder="Port" [(ngModel)]="port" />
+  </div>
+  <div>
+    <p>Namespace</p>
+    <input />
+  </div>
+  <div>
+    <p></p>
+    <button
+      class="btn"
+      style="height: 40px; margin-top: 40px"
+      (click)="connect()"
+    >
+      Connect
+    </button>
+  </div>
+</div>

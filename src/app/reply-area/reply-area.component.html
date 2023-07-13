@@ -1,9 +1,10 @@
-<div class="containerCol">
+<div class="containerCol" [style.width.px]="getWidth()">
   <textarea
-    *ngIf="text !== ''"
+    *ngIf="getText() !== ''"
     class="textarea"
     [style.height.px]="getHeight()"
+    [style.color]="reply.IsError ? 'red' : 'black'"
     readonly
-    >{{ text }}</textarea
+    >{{ getText() }}</textarea
   >
 </div>
