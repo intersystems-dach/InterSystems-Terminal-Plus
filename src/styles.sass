@@ -2,6 +2,8 @@
 body
   margin: 0
   padding: 0
+  background: var(--bg-color)
+  transition: 0.3s
 
 .sticky
   position: fixed
@@ -46,8 +48,25 @@ body
   padding: 10px 20px
   font-weight: bold
   transition: 0.2s
-  background: #2c2a92
-  color: white
+  background: var(--primary-color)
+  color: var(--inverted-text-color)
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px
+
   &:hover
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5)
-    transform: scale(1.1)
+    transform: scale(1.05)
+
+[data-theme="light"]
+  --text-color: black
+  --inverted-text-color: white
+  --bg-color: #ffffff
+  --header-color: #f5f5f5
+  --primary-color: #2e3399
+  --secondary-color: #00b6b0
+
+[data-theme="dark"]
+  --text-color: white
+  --inverted-text-color: black
+  --bg-color: #1a1a2b
+  --header-color: #11111d
+  --primary-color: #00b6b0
+  --secondary-color: #2e3399

@@ -32,7 +32,7 @@ export class ApiService {
       );
   }
 
-  executeCode(pCode: string): Observable<any> {
+  executeCode(pCode: string, namespace: string): Observable<any> {
     return this.http
       .post(
         'http://' +
@@ -41,12 +41,30 @@ export class ApiService {
           ApiService.port +
           '/terminalplus/execute?apikey=' +
           ApiService._apiKey,
-        { code: pCode }
+        { code: pCode, namespace: namespace }
       )
       .pipe(
         catchError((err: HttpErrorResponse) => {
           if (err.status == 401) {
             throw new Error('Invalid API key');
+          }
+          throw new Error('unknown error: ' + err.status);
+        })
+      );
+  }
+  getAllNamespaces(): Observable<any> {
+    return this.http
+      .get(
+        'http://' +
+          ApiService.host +
+          ':' +
+          ApiService.port +
+          '/terminalplus/namespaces/get/all'
+      )
+      .pipe(
+        catchError((err: HttpErrorResponse) => {
+          if (err.status == 500) {
+            throw new Error('Something went wrong!');
           }
           throw new Error('unknown error: ' + err.status);
         })

@@ -2,6 +2,7 @@ import { Component, EventEmitter, Output } from '@angular/core';
 import { ApiService } from '../services/api.service';
 import { LocalStorageService } from '../services/local-storage.service';
 import { AppearenceService } from '../services/appearence.service';
+import { NamespaceService } from '../services/namespace.service';
 
 @Component({
   selector: 'app-code-area',
@@ -17,7 +18,8 @@ export class CodeAreaComponent {
   constructor(
     private apiService: ApiService,
     private localStorageService: LocalStorageService,
-    private appearenceService: AppearenceService
+    private appearenceService: AppearenceService,
+    private namespaceService: NamespaceService
   ) {
     this.code = this.localStorageService.getCode();
   }
@@ -25,17 +27,19 @@ export class CodeAreaComponent {
   run() {
     this.localStorageService.setCode(this.code);
     this.loading = true;
-    this.apiService.executeCode(this.code).subscribe({
-      next: (data: any) => {
-        console.log(data);
-        this.loading = false;
-        this.replyEmitter.emit(data);
-      },
-      error: (error: Error) => {
-        alert(error);
-        this.loading = false;
-      },
-    });
+    this.apiService
+      .executeCode(this.code, this.namespaceService.getCurrNamespace())
+      .subscribe({
+        next: (data: any) => {
+          console.log(data);
+          this.loading = false;
+          this.replyEmitter.emit(data);
+        },
+        error: (error: Error) => {
+          alert(error);
+          this.loading = false;
+        },
+      });
   }
 
   getWidth() {

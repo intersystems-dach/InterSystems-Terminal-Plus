@@ -30,6 +30,30 @@ export class LocalStorageService {
     return '';
   }
 
+  setNamespace(namespace: string) {
+    localStorage.setItem('namespace', namespace);
+  }
+
+  getNamespace(): string {
+    const namespace = localStorage.getItem('namespace');
+    if (namespace) {
+      return namespace;
+    }
+    return '';
+  }
+
+  setIsDarkmode(isDarkmode: boolean) {
+    localStorage.setItem('isDarkmode', isDarkmode.toString());
+  }
+
+  getIsDarkmode(): boolean {
+    const isDarkmode = localStorage.getItem('isDarkmode');
+    if (isDarkmode) {
+      return isDarkmode === 'true';
+    }
+    return false;
+  }
+
   setPort(port: string) {
     localStorage.setItem('port', port);
   }

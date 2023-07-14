@@ -3,8 +3,9 @@
     *ngIf="getText() !== ''"
     class="textarea"
     [style.height.px]="getHeight()"
-    [style.color]="reply.IsError ? 'red' : 'black'"
+    [style.color]="reply.IsError ? 'red' : 'var(--text-color)'"
     readonly
+    spellcheck="false"
     >{{ getText() }}</textarea
   >
 </div>

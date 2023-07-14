@@ -4,6 +4,7 @@
     [(ngModel)]="code"
     placeholder="Write your code here"
     [style.height.px]="getHeight()"
+    spellcheck="false"
   ></textarea>
   <button class="btn" (click)="run()" *ngIf="!loading" style="font-size: 1.2em">
     Run

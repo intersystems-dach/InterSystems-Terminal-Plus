@@ -13,7 +13,14 @@
   </div>
   <div>
     <p>Namespace</p>
-    <input />
+    <select name="Namespaces" [(ngModel)]="namespace">
+      <option
+        *ngFor="let ns of getNamespacesService().getAllNamespaces()"
+        [value]="ns"
+      >
+        {{ ns }}
+      </option>
+    </select>
   </div>
   <div>
     <p></p>
