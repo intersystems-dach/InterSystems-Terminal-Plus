@@ -13,13 +13,17 @@ export class NamespaceService {
     private apiService: ApiService,
     private localStorageService: LocalStorageService
   ) {
-    this.apiService.getAllNamespaces().subscribe((data: any) => {
-      this.allNamespaces = data.Namespaces;
-    });
+    this.fetchAllNamespaces();
     this.currNamespace = this.localStorageService.getNamespace();
   }
 
-  public setCurrNamespace(namespace: string): boolean {
+  fetchAllNamespaces() {
+    this.apiService.getAllNamespaces().subscribe((data: any) => {
+      this.allNamespaces = data.Namespaces;
+    });
+  }
+
+  setCurrNamespace(namespace: string): boolean {
     if (this.allNamespaces.includes(namespace)) {
       this.currNamespace = namespace;
       this.localStorageService.setNamespace(namespace);
@@ -28,11 +32,11 @@ export class NamespaceService {
     return false;
   }
 
-  public getCurrNamespace(): string {
+  getCurrNamespace(): string {
     return this.currNamespace;
   }
 
-  public getAllNamespaces(): string[] {
+  getAllNamespaces(): string[] {
     return this.allNamespaces;
   }
 }

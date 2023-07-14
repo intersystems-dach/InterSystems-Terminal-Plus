@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable, catchError } from 'rxjs';
+import { LocalStorageService } from './local-storage.service';
 
 @Injectable({
   providedIn: 'root',
@@ -10,7 +11,13 @@ export class ApiService {
   public static host: string = 'localhost';
   public static port: number = 52773;
 
-  constructor(private http: HttpClient) {}
+  constructor(
+    private http: HttpClient,
+    private localStorageService: LocalStorageService
+  ) {
+    ApiService.host = this.localStorageService.getHost();
+    ApiService.port = this.localStorageService.getPort();
+  }
 
   static setAPIKey(pApiKey: string) {
     ApiService._apiKey = pApiKey;
@@ -47,6 +54,10 @@ export class ApiService {
         catchError((err: HttpErrorResponse) => {
           if (err.status == 401) {
             throw new Error('Invalid API key');
+          } else if (err.status == 0) {
+            throw new Error('Could not connect to server!');
+          } else if (err.status == 500) {
+            throw new Error('Something went wrong!');
           }
           throw new Error('unknown error: ' + err.status);
         })

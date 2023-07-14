@@ -34,6 +34,7 @@ export class ConnectionBarComponent {
     this.localStorageService.setHost(this.host);
     this.localStorageService.setPort(this.port.toString());
     this.localStorageService.setAPIKey(this.apiKey);
+    this.namespaceService.fetchAllNamespaces();
     this.namespaceService.setCurrNamespace(this.namespace);
   }
 
