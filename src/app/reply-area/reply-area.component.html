@@ -1,4 +1,7 @@
 <div class="containerCol" [style.width.px]="getWidth()">
+  <div class="namespaceLabel" *ngIf="getText() !== ''">
+    <i>{{ getCurrNamespace() }}</i>
+  </div>
   <textarea
     *ngIf="getText() !== ''"
     class="textarea"

@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { AppearenceService } from '../services/appearence.service';
+import { NamespaceService } from '../services/namespace.service';
 
 @Component({
   selector: 'app-reply-area',
@@ -13,7 +14,10 @@ export class ReplyAreaComponent {
     Prompt: '',
   };
 
-  constructor(private appearenceService: AppearenceService) {}
+  constructor(
+    private appearenceService: AppearenceService,
+    private namespaceService: NamespaceService
+  ) {}
 
   getText() {
     if (this.reply.IsError) {
@@ -39,5 +43,9 @@ export class ReplyAreaComponent {
       return 200;
     }
     return height;
+  }
+
+  getCurrNamespace() {
+    return this.namespaceService.getCurrNamespace();
   }
 }

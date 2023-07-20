@@ -10,6 +10,7 @@ export class ApiService {
   private static _apiKey: string = '';
   public static host: string = 'localhost';
   public static port: number = 52773;
+  public static APIVERSION: string = '1.0';
 
   constructor(
     private http: HttpClient,
@@ -17,6 +18,9 @@ export class ApiService {
   ) {
     ApiService.host = this.localStorageService.getHost();
     ApiService.port = this.localStorageService.getPort();
+    this.getAPIVersion().subscribe((data) => {
+      ApiService.APIVERSION = data.version;
+    });
   }
 
   static setAPIKey(pApiKey: string) {
@@ -63,6 +67,7 @@ export class ApiService {
         })
       );
   }
+
   getAllNamespaces(): Observable<any> {
     return this.http
       .get(
@@ -71,6 +76,25 @@ export class ApiService {
           ':' +
           ApiService.port +
           '/terminalplus/namespaces/get/all'
+      )
+      .pipe(
+        catchError((err: HttpErrorResponse) => {
+          if (err.status == 500) {
+            throw new Error('Something went wrong!');
+          }
+          throw new Error('unknown error: ' + err.status);
+        })
+      );
+  }
+
+  getAPIVersion(): Observable<any> {
+    return this.http
+      .get(
+        'http://' +
+          ApiService.host +
+          ':' +
+          ApiService.port +
+          '/terminalplus/version/get'
       )
       .pipe(
         catchError((err: HttpErrorResponse) => {

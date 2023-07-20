@@ -24,6 +24,20 @@ export class CodeAreaComponent {
     this.code = this.localStorageService.getCode();
   }
 
+  handleKeydown(event: any) {
+    if (event.key == 'Tab') {
+      event.preventDefault();
+      let start = event.target.selectionStart;
+      let end = event.target.selectionEnd;
+      event.target.value =
+        event.target.value.substring(0, start) +
+        '  ' +
+        event.target.value.substring(end);
+      event.target.selectionStart = event.target.selectionEnd = start + 1;
+      //this.data = event.target.value;
+    }
+  }
+
   run() {
     this.localStorageService.setCode(this.code);
     this.loading = true;
@@ -31,7 +45,6 @@ export class CodeAreaComponent {
       .executeCode(this.code, this.namespaceService.getCurrNamespace())
       .subscribe({
         next: (data: any) => {
-          console.log(data);
           this.loading = false;
           this.replyEmitter.emit(data);
         },

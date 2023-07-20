@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { AppearenceService } from './services/appearence.service';
+import { ApiService } from './services/api.service';
 
 @Component({
   selector: 'app-root',
@@ -13,7 +14,6 @@ export class AppComponent {
     ErrorText: '',
     Prompt: '',
   };
-
   constructor(private appearenceService: AppearenceService) {}
 
   onReply(pReply: any) {
@@ -22,5 +22,9 @@ export class AppComponent {
 
   getAppearanceService() {
     return this.appearenceService;
+  }
+
+  getAPIVersion() {
+    return ApiService.APIVERSION;
   }
 }

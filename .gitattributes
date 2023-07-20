@@ -5,3 +5,5 @@ src/** export-ignore
 .gitignore export-ignore
 *.md export-ignore
 *.json export-ignore
+src export-ignore
+.vscode export-ignore
