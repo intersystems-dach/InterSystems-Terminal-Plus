@@ -30,16 +30,17 @@ ClassMethod PreprocessCode(
         line = codeArr[i]
 
         # transform all possible cases for write
-        if line.startswith("w "):
+        
+        if line.strip().startswith("w "):
             line = line.replace("w ", "Write ")
-        if line.startswith("W "):
+        if line.strip().startswith("W "):
             line = line.replace("W ", "Write ")
-        if line.startswith("write "):
+        if line.strip().startswith("write "):
             line = line.replace("write ", "Write ")
-        if line.startswith("WRITE "):
+        if line.strip().startswith("WRITE "):
             line = line.replace("WRITE ", "Write ")
 
-        if line.startswith("Write "):
+        if line.strip().startswith("Write "):
             line = line.replace("Write ", "Set terminalPlusResultString = terminalPlusResultString_")
 
             # add line break

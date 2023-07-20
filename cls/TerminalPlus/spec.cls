@@ -73,6 +73,21 @@ XData OpenAPI [ MimeType = application/json ]
           }
         }
       }
+    },
+    "/version/get":{
+      "get":{
+        "summary":"Get the current version of the API",
+        "description":"Get the current version of the API",
+        "operationId":"getVersion",
+        "responses":{
+          "200":{
+            "description":"The version",
+            "schema":{
+              "type":"object"
+            }
+          }
+        }
+      }
     }
   }
 }

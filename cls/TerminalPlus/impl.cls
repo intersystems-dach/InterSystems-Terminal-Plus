@@ -1,8 +1,10 @@
 /// An API to connect to the InterSystems Terminal Plus.<br/>
 /// Business logic class defined by OpenAPI in TerminalPlus.spec<br/>
-/// Updated Jul 14, 2023 10:48:52
+/// Updated Jul 20, 2023 12:38:50
 Class TerminalPlus.impl Extends %REST.Impl [ ProcedureBlock ]
 {
+
+Parameter VERSION = "v1.0";
 
 /// If ExposeServerExceptions is true, then details of internal errors will be exposed.
 Parameter ExposeServerExceptions = 0;
@@ -52,17 +54,13 @@ ClassMethod getAllNamespaces() As %Stream.Object
     Quit obj.%ToJSON()
 }
 
-/// Description
-ClassMethod testNS() As %Status
+/// Get the current version of the API
+ClassMethod getVersion() As %Stream.Object
 {
-    Set tSC = ##class(%SYS.Namespace).ListAll(.result)
-    Set arr = ##class(%DynamicArray).%New()
-    Set key = $O(result(""))
-    While (key '= "") {
-        Do arr.%Push(key)
-        Set key = $O(result(key))
-    }
-    ZWrite arr
+    Set obj = ##class(%DynamicObject).%New()
+    Do obj.%Set("version", ..#VERSION)
+    Do ..%SetStatusCode(200)
+    Quit obj.%ToJSON()
 }
 
 }
