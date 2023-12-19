@@ -32,7 +32,7 @@
 6. Click `Import`.
 7. Open an InterSystems Terminal and run `do ##class(TerminalPlus.Utils.Installer).SetUp()`.
 8. Copy the API key displayed in the terminal.
-9. Run `npm start` in the root folder of the directory (The website should open in your browser. When not open [localhost:4200](localhost:4200))
+9. Run `npm start` in the root folder of the directory (The website should open in your browser. When not open [localhost:4200](http://localhost:4200))
 10. Paste the API key into the `API Key` field.
 11. Type the hostaddress of your IRIS instance into the `Host` field.
 12. Type the port of your IRIS instance into the `Port` field.
