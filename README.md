@@ -9,14 +9,14 @@
 
 <!-- Badges -->
 <div align="center">
-   <a href="https://github.com/phil1436/InterSystems-Terminal-Plus/blob/master/LICENSE">
-       <img src="https://img.shields.io/github/license/phil1436/InterSystems-Terminal-Plus" alt="license" />
+   <a href="https://github.com/intersystems-dach/InterSystems-Terminal-Plus/blob/master/LICENSE">
+       <img src="https://img.shields.io/github/license/intersystems-dach/InterSystems-Terminal-Plus" alt="license" />
    </a>
-   <a href="https://github.com/phil1436/InterSystems-Terminal-Plus/stargazers">
-       <img src="https://img.shields.io/github/stars/phil1436/InterSystems-Terminal-Plus" alt="stars" />
+   <a href="https://github.com/intersystems-dach/InterSystems-Terminal-Plus/stargazers">
+       <img src="https://img.shields.io/github/stars/intersystems-dach/InterSystems-Terminal-Plus" alt="stars" />
    </a>
-   <a href="https://github.com/phil1436/InterSystems-Terminal-Plus/commits/master">
-       <img src="https://img.shields.io/github/last-commit/phil1436/InterSystems-Terminal-Plus" alt="last commit" />
+   <a href="https://github.com/intersystems-dach/InterSystems-Terminal-Plus/commits/master">
+       <img src="https://img.shields.io/github/last-commit/intersystems-dach/InterSystems-Terminal-Plus" alt="last commit" />
    </a>
 </div>
 
@@ -24,7 +24,7 @@
 
 ## Installation
 
-1. Download the latest release from the [releases page](https://github.com/phil1436/InterSystems-Terminal-Plus/releases/latest).
+1. Download the latest release from the [releases page](https://github.com/intersystems-dach/InterSystems-Terminal-Plus/releases/latest).
 2. Unzip the file.
 3. In the InterSystems Management Portal, navigate to `System Explorer` > `Classes`.
 4. Click `Import` and select _Directory_.
