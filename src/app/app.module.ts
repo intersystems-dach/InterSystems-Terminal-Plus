@@ -9,11 +9,19 @@ import { HttpClientModule } from '@angular/common/http';
 import { ReplyAreaComponent } from './reply-area/reply-area.component';
 import { ConnectionBarComponent } from './connection-bar/connection-bar.component';
 import { DarkmodeSwitchComponent } from './darkmode-switch/darkmode-switch.component';
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 
 @NgModule({
-  declarations: [AppComponent, HeaderComponent, CodeAreaComponent, ReplyAreaComponent, ConnectionBarComponent, DarkmodeSwitchComponent],
+  declarations: [
+    AppComponent,
+    HeaderComponent,
+    CodeAreaComponent,
+    ReplyAreaComponent,
+    ConnectionBarComponent,
+    DarkmodeSwitchComponent,
+  ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
-  providers: [],
+  providers: [{ provide: LocationStrategy, useClass: HashLocationStrategy }],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
